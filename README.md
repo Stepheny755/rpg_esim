@@ -13,7 +13,7 @@ This is the code for the 2018 CoRL paper **ESIM: an Open Event Camera Simulator*
 }
 ```
 You can find a pdf of the paper [here](http://rpg.ifi.uzh.ch/docs/CORL18_Rebecq.pdf). If you use any of this code, please cite this publication.
-
+<!-- 
 ## Python Bindings
 Python bindings for the event camera simulator can be found [here](https://github.com/uzh-rpg/rpg_vid2e). 
 We now also support GPU support for fully parallel event generation!
@@ -47,4 +47,11 @@ This research was supported by by Swiss National Center of Competence Research R
 A significant part of ESIM uses components (spline trajectories, inertial measurement unit simulation, various utility functions) from the [ze_oss](https://github.com/zurich-eye/ze_oss) project.
 ESIM depends on [UnrealCV](https://github.com/unrealcv/unrealcv) for the photorealistic rendering engine.
 We also reused some [code samples](https://github.com/JoeyDeVries/LearnOpenGL.git) from the excellent [Lean OpenGL](https://learnopengl.com/) tutorial in our OpenGL rendering engine.
-Finally, ESIM depends on the [Open Asset Import Library (assimp)](https://github.com/assimp/assimp) to load 3D models and Blender scenes within the OpenGL rendering engine.
+Finally, ESIM depends on the [Open Asset Import Library (assimp)](https://github.com/assimp/assimp) to load 3D models and Blender scenes within the OpenGL rendering engine. -->
+
+
+## Docker
+
+```
+docker run --net=host --rm --privileged -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix --gpus all -it esim /bin/bash
+```
