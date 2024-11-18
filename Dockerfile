@@ -27,4 +27,4 @@ WORKDIR /esim_ws
 RUN catkin init && catkin config --extend /opt/ros/noetic --cmake-args -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS=-Wno-int-in-bool-context && catkin build esim_ros
 
 # setup entrypoint
-CMD ["./src/run.sh"]
+CMD ["/bin/bash", "${REPO_PATH}/run.sh"]
