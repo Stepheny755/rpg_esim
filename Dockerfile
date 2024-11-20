@@ -15,6 +15,7 @@ libglfw3-dev \
 libglm-dev \
 python3-catkin-tools \
 python3-vcstool \
+python3-pip \
 git \
 libtool \
 libtool-bin \
@@ -23,8 +24,10 @@ vim
 
 # copy files
 RUN mkdir -p ~/sim_ws/src && mkdir -p ~/sim_ws/logs && cd ~/sim_ws
-COPY event_camera_simulator ${REPO_PATH}/event_camera_simulator
-COPY dependencies.yaml ${REPO_PATH}
+COPY . ${REPO_PATH}
+
+# install python dependencies
+RUN pip3 install -r requirements.txt
 
 # fix rpg_esim issues
 # issue: https://github.com/uzh-rpg/rpg_esim/issues/1
@@ -43,6 +46,9 @@ COPY sim/*.conf "${REPO_PATH}/event_camera_simulator/esim_ros/cfg"
 
 # use python3 
 RUN find ${REPO_PATH} -type f -exec sed -i 's/\#\!\/usr\/bin\/env \<python\>/\#\!\/usr\/bin\/env python3/g' {} \;
+
+# add trajectory.csv
+RUN python3 ${REPO_PATH}/generate_trajectory.py -ax 50 -ay 50 -az 100
 
 EXPOSE 9000
 
