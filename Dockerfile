@@ -44,6 +44,8 @@ COPY sim/*.conf "${REPO_PATH}/event_camera_simulator/esim_ros/cfg"
 # use python3 
 RUN find ${REPO_PATH} -type f -exec sed -i 's/\#\!\/usr\/bin\/env \<python\>/\#\!\/usr\/bin\/env python3/g' {} \;
 
+EXPOSE 9000
+
 # apply patches
 # issue: https://github.com/uzh-rpg/rpg_esim/issues/97
 COPY sim/patches/esim.perspective "${REPO_PATH}/event_camera_simulator/esim_visualization/cfg"
