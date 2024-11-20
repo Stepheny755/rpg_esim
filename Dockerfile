@@ -47,8 +47,8 @@ COPY sim/*.conf "${REPO_PATH}/event_camera_simulator/esim_ros/cfg"
 # use python3 
 RUN find ${REPO_PATH} -type f -exec sed -i 's/\#\!\/usr\/bin\/env \<python\>/\#\!\/usr\/bin\/env python3/g' {} \;
 
-# add circular.csv
-RUN touch ${REPO_PATH}/event_camera_simulator/imp/imp_opengl_renderer/resources/objects/trajectory.csv
+# add trajectory.csv
+RUN python3 ${REPO_PATH}/generate_trajectory.py -ax 50 -ay 50 -az 100
 
 EXPOSE 9000
 
